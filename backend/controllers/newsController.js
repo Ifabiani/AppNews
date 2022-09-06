@@ -6,19 +6,25 @@ const news = {}
 
 
 news.getNews = async (req,res)=> {
-const news = await New.find()
+const news = await New.find({archivedDate: false, deleteDate: false})
 res.json(news)
 }
 
+news.getNewsArchived = async (req,res)=>{
+const news = await New.find({archivedDate: true, deleteDate:false})
+res.json(news)    
+}
+
 news.createNews = async (req,res)=>{
-const {title, description, date, content, author, archiveDate} = req.body;
+const {title, description, date, content, author, archiveDate, deleteDate} = req.body;
 const newNew = new New({
     title: title,
     description: description,
     date: date,
     content: content,
     author: author,
-    archiveDate: archiveDate
+    archiveDate: archiveDate,
+    deleteDate: deleteDate
 })
 await newNew.save()
 }
@@ -30,14 +36,15 @@ news.getNew = async (req,res)=>{
 }
 
 news.updateNew = async (req,res)=>{
-    const {title, description, date, content, author, archiveDate} = req.body;
+    const {title, description, date, content, author, archiveDate, deleteDate} = req.body;
     await New.findByIdAndUpdate(req.params.id, {
         title,
         description,
         date,
         content,
         author,
-        archiveDate
+        archiveDate,
+        deleteDate
     })
 
     

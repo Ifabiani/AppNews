@@ -20,8 +20,8 @@ export default function Nav() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
+          <div className="collapse navbar-collapse " id="navbarNav">
+            <ul className="navbar-nav ">
               <li className="nav-item">
                 <Link className="navbar-brand" to="/">
                     News
@@ -30,11 +30,6 @@ export default function Nav() {
               <li className="nav-item">
               <Link className="navbar-brand" to="/archived">
                     Archived News
-                </Link>
-              </li>
-              <li className="nav-item">
-              <Link className="navbar-brand" to="/create">
-                    Create News
                 </Link>
               </li>
             </ul>

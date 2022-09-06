@@ -18,12 +18,12 @@ const newSchema = new Schema({
             type: String
         },
         archivedDate: {
-            type: Date,
-            default: null
+            type: Boolean,
+            default: false,
         },
         deleteDate: {
-            type: Date,
-            default: null
+            type: Boolean,
+            default: false
         }},
         {timestamps: true}
     
