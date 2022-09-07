@@ -18,7 +18,8 @@ const newSchema = new Schema({
             type: String
         },
         archivedDate: {
-            type: String,
+            type: Date,
+            default: {}
         },
         deleteDate: {
             type: Boolean,

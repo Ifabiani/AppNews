@@ -18,7 +18,6 @@ export default function ArchivedNews() {
   console.log(news)
 
   function deleteNew(id){
- 
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -26,7 +25,7 @@ export default function ArchivedNews() {
     };
     fetch('http://localhost:3030/api/news/'+id, requestOptions)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(window.location.href = '/archived')   
   }
 
   return (

@@ -14,20 +14,17 @@ export default function ActualNews() {
   },[])
 
 
-function archiveNew(id){
- 
-  const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({archivedDate: "s"})
-  };
-  fetch('http://localhost:3030/api/news/'+id, requestOptions)
-      .then(response => response.json())
-      .then(data => {setNews(data)})
-}
+  function archiveNew(id){
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ archivedDate: Date.now() })
+    };
+    fetch('http://localhost:3030/api/news/'+id, requestOptions)
+        .then(response => response.json())
+        .then(window.location.href = '/')  
+  }
 
-
-  console.log(news)
   
 
   return (
