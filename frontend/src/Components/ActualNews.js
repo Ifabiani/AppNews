@@ -19,11 +19,11 @@ function archiveNew(id){
   const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ archiveDate: true })
+      body: JSON.stringify({archivedDate: "s"})
   };
   fetch('http://localhost:3030/api/news/'+id, requestOptions)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {setNews(data)})
 }
 
 

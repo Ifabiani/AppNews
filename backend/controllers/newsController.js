@@ -6,12 +6,12 @@ const news = {}
 
 
 news.getNews = async (req,res)=> {
-const news = await New.find({archivedDate: false, deleteDate: false})
+const news = await New.find({archivedDate: "n", deleteDate: false}).sort({date: -1})
 res.json(news)
 }
 
 news.getNewsArchived = async (req,res)=>{
-const news = await New.find({archivedDate: true, deleteDate:false})
+const news = await New.find({archivedDate: "s", deleteDate:false}).sort({date: -1})
 res.json(news)    
 }
 

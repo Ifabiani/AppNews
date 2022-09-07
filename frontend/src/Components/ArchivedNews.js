@@ -17,6 +17,18 @@ export default function ArchivedNews() {
 
   console.log(news)
 
+  function deleteNew(id){
+ 
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ deleteDate: true })
+    };
+    fetch('http://localhost:3030/api/news/'+id, requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+  }
+
   return (
     <div className="col-lg-6 p-5  mb-10 ">
       <div className="card shadow mb-4 ">
@@ -27,22 +39,18 @@ export default function ArchivedNews() {
         </div>
         <div className="card-body col-auto col-md-12">
           <div className="row ">
-          <ul className="flex col-md-12"> { news.map( (producto, i) => <li className='list-group '  key={i + producto}>
+          <ul className="flex col-md-12"> { news.map( (product, i) => <li className='list-group '  key={i + product}>
           <div className="card col-md-12 col-auto ">
-      <div className="card-header ">{producto.title}</div>
-      <div className="card-header">{producto.description}</div>
-      <div className="card-body">{producto.content}</div>
-      <div className="card-footer">{producto.author}</div>
-      <div className="card-footer">{producto.date}</div>
+      <div className="card-header">{product.title}</div>
+      <div className="card-header">{product.description}</div>
+      <div className="card-body">{product.content}</div>
+      <div className="card-footer">{product.author}</div>
+      <div className="card-footer">{product.date}</div>
       </div>
-      <button className='btn btn-primary col-md-6'>Eliminar</button>
+      <button onClick={()=> deleteNew(product._id)} className='btn btn-primary col-md-6'>Eliminar</button>
       <br></br>
-      
       </li> 
-      
       ) } </ul>
-          
-            
           </div>
         </div>
       </div>
