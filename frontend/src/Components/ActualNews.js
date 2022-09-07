@@ -28,25 +28,27 @@ export default function ActualNews() {
   
 
   return (
-    <div className="col-lg-6 p-5  mb-10 ">
+    <div className="col-lg-6 p-5  mb-10 mx-auto ">
       <div className="card shadow mb-4 ">
         <div className="card-header py-3 ">
           <h5 className="m-0 font-weight-bold text-gray-800 text-center">
             News
           </h5>
         </div>
-        <div className="card-body col-auto col-md-12">
-          <div className="row ">
+        <div className="card-body col-auto col-md-12 container">
+          <div className="row">
           <ul className="flex col-md-12"> { news.map( (product, i) => <li className='list-group '  key={i + product}>
-          <div className="card col-md-12 col-auto ">
+          <div className="card col-md-12 col-auto">
       <div className="card-header">{product.title}</div>
       <div className="card-header">{product.description}</div>
       <div className="card-body">{product.content}</div>
       <div className="card-footer">{product.author}</div>
       <div className="card-footer">{product.date}</div>
       </div>
-      <button onClick={()=> archiveNew(product._id)} className='btn btn-primary col-md-6'>Archivar</button>
       <br></br>
+      <button onClick={()=> archiveNew(product._id)} className='btn btn-dark col-md-6 mx-auto'>Archivar</button>
+      <br></br>
+      <hr></hr>
       </li> 
       ) } </ul>
           </div>

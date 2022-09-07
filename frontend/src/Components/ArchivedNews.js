@@ -29,7 +29,7 @@ export default function ArchivedNews() {
   }
 
   return (
-    <div className="col-lg-6 p-5  mb-10 ">
+    <div className="col-lg-6 p-5  mb-10 mx-auto">
       <div className="card shadow mb-4 ">
         <div className="card-header py-3 ">
           <h5 className="m-0 font-weight-bold text-gray-800 text-center">
@@ -46,8 +46,10 @@ export default function ArchivedNews() {
       <div className="card-footer">{product.author}</div>
       <div className="card-footer">{product.date}</div>
       </div>
-      <button onClick={()=> deleteNew(product._id)} className='btn btn-primary col-md-6'>Eliminar</button>
       <br></br>
+      <button onClick={()=> deleteNew(product._id)} className='btn btn-dark btn-primary col-md-6 mx-auto'>Eliminar</button>
+      <br></br>
+      <hr></hr>
       </li> 
       ) } </ul>
           </div>

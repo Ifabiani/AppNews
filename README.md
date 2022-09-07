@@ -1,3 +1,5 @@
+Proyecto realizado con MongoDB el backend y React JS el frontend.
+
 Las noticias las agregué a través de POSTMAN con el método POST a la siguiente URL http://localhost:3030/api/news con el siguiente formato("Content-type" : "applicatio/json"):
 
 {"title": "Noticia 1",
@@ -6,4 +8,4 @@ Las noticias las agregué a través de POSTMAN con el método POST a la siguient
 "author": "Autor 1"
 }
 
-Por falta de tiempo no he podido realizar la vista para generar las mismas desde la misma App.
+Por falta de tiempo no he podido realizar la vista para generarlas desde la misma App.
