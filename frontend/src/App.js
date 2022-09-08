@@ -6,19 +6,14 @@ import ArchivedNews from "./Components/ArchivedNews";
 import Nav from "./Components/Nav";
 
 function App() {
-  return (
-      <Router>
-        <Nav/>
-        
-        <Routes>
-          <Route path="/" exact element={<ActualNews/>}/>
-          <Route path="/archived" element={<ArchivedNews/>}/>
-        
-          
-        </Routes>
-        
-
-      </Router>
+return (
+<Router>
+  <Nav/>
+    <Routes>
+      <Route path="/" exact element={<ActualNews/>}/>
+      <Route path="/archived" element={<ArchivedNews/>}/>
+    </Routes>
+</Router>
   );
 }
 

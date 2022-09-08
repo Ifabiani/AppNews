@@ -1,31 +1,34 @@
-import React, { useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from "react";
 
 export default function ActualNews() {
-
   const [news, setNews] = useState([]);
 
+  //Monto el componente y lo seteo con lo que recibo de la API
   useEffect(() => {
-    fetch('http://localhost:3030/api/news')
-    .then(response => response.json())
-    .then(data => {setNews(data)})
-    .catch(error => {console.log(error);})
-    
-  },[])
+    fetch("http://localhost:3030/api/news")
+      .then((response) => response.json())
+      .then((data) => {
+        setNews(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-
-  function archiveNew(id){
+  //Función para agregarle una fecha al campo archivedDate al clickear el botón archivar
+  function archiveNew(id) {
     const requestOptions = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ archivedDate: Date.now() })
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ archivedDate: Date.now() }),
     };
-    fetch('http://localhost:3030/api/news/'+id, requestOptions)
-        .then(response => response.json())
-        .then(window.location.href = '/')  
+    fetch("http://localhost:3030/api/news/" + id, requestOptions)
+      .then((response) => response.json())
+      .then((window.location.href = "/"))
+      .catch((error) => {
+        console.log(error);
+      });
   }
-
-  
 
   return (
     <div className="col-lg-6 p-5  mb-10 mx-auto ">
@@ -37,23 +40,35 @@ export default function ActualNews() {
         </div>
         <div className="card-body col-auto col-md-12 container">
           <div className="row">
-          <ul className="flex col-md-12"> { news.map( (product, i) => <li className='list-group '  key={i + product}>
-          <div className="card col-md-12 col-auto">
-      <div className="card-header">{product.title}</div>
-      <div className="card-header">{product.description}</div>
-      <div className="card-body">{product.content}</div>
-      <div className="card-footer">{product.author}</div>
-      <div className="card-footer">{product.date}</div>
-      </div>
-      <br></br>
-      <button onClick={()=> archiveNew(product._id)} className='btn btn-dark col-md-6 mx-auto'>Archivar</button>
-      <br></br>
-      <hr></hr>
-      </li> 
-      ) } </ul>
+            <ul className="flex col-md-12">
+              {" "}
+              {news.map((product, i) => (
+                <li className="list-group " key={i + product}>
+                  <div className="card col-md-12 col-auto">
+                    <div className="card-header">{product.title}</div>
+                    <div className="card-header">{product.description}</div>
+                    <div className="card-body">{product.content}</div>
+                    <div className="card-footer">{product.author}</div>
+                    <div className="card-footer">Created: {product.date}</div>
+                    <div className="card-footer">
+                      Archived:{product.archivedDate}
+                    </div>
+                  </div>
+                  <br></br>
+                  <button
+                    onClick={() => archiveNew(product._id)}
+                    className="btn btn-dark col-md-6 mx-auto"
+                  >
+                    Archivar
+                  </button>
+                  <br></br>
+                  <hr></hr>
+                </li>
+              ))}{" "}
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
